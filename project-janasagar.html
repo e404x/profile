@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janasagar v2 Case Study | Sagar Ghimire</title>
+    <meta name="description" content="How I built Janasagar v2, a community Q&A platform with a hybrid feed, strict AJV validation, 27 rate limit rules, secure sessions, and 8 background queues.">
+    <meta name="theme-color" content="#f8f7f3">
+    <link rel="canonical" href="https://sghimrie.com.np/project-janasagar.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sagar Ghimire">
+    <meta property="og:title" content="Sagar Ghimire | Janasagar v2 Case Study">
+    <meta property="og:description" content="How I built Janasagar v2, a community Q&A platform with a hybrid feed, strict AJV validation, 27 rate limit rules, secure sessions, and 8 background queues.">
+    <meta property="og:url" content="https://sghimrie.com.np/project-janasagar.html">
+    <meta property="og:image" content="https://sghimrie.com.np/img.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="google-adsense-account" content="ca-pub-4592436505571114">
+    <link rel="icon" type="image/png" href="assets/brand/sagar-ghimire-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="bg-fx">
+</div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+<nav id="nav">
+<div class="nav-inner">
+<a class="brand" href="index.html" aria-label="Sagar Ghimire home">
+<img class="brand-logo" src="assets/brand/sagar-ghimire-logo.png" width="44" height="44" alt=""> Sagar Ghimire</a>
+<button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation">
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+</button>
+<div class="nav-menu" id="navigation">
+<a href="projects.html">Work</a>
+<a href="skills.html">Skills</a>
+<a href="about.html">About</a>
+<a class="nav-cta" href="contact.html">Let’s talk <span aria-hidden="true">↗</span>
+</a>
+</div>
+</div>
+</nav>
+
+    <main id="main">
+<header class="page-hero">
+        <div class="container">
+            <a class="back-link" href="projects.html" style="margin-bottom: 28px; display: flex; width: fit-content;">← All projects</a>
+            <span class="eyebrow" style="margin-top: 20px;">
+<span class="num">Case study 01</span> Community platform</span>
+            <h1>Janasagar <span class="grad">v2</span>
+</h1>
+            <p class="lead">Janasagar is a live community platform. It helps users build a strong profile, bond with friends, and earn points for genuinely helping others find the right direction.</p>
+            <div class="meta-grid">
+                <div class="meta-cell">
+<div class="k">Role</div>
+<div class="v">Solo full-stack developer</div>
+</div>
+                <div class="meta-cell">
+<div class="k">Type</div>
+<div class="v">Four apps, one backend</div>
+</div>
+                <div class="meta-cell">
+<div class="k">Core stack</div>
+<div class="v">Next.js, Express, PostgreSQL, Redis, RabbitMQ</div>
+</div>
+                <div class="meta-cell">
+<div class="k">Status</div>
+<div class="v">Live and improving</div>
+</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- WHAT IT DOES -->
+    <section class="section">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow">
+<span class="num">01</span> What it does</span>
+                <h2 class="section-title">A community platform, built for real people.</h2>
+                <p class="section-sub">I built Janasagar around a simple idea: useful questions and answers should help people find each other. Profiles, articles, and groups give those conversations a place to grow.</p>
+            </div>
+            <div class="fgrid">
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="12" cy="12" r="9"/>
+<path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4"/>
+<path d="M12 17h.01"/>
+</svg>
+</div>
+<h4>Build your profile</h4>
+<p>Create a strong profile, write articles, share what you know, and grow your own space in the community.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+<circle cx="9" cy="7" r="4"/>
+<path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+<path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+</svg>
+</div>
+<h4>Build bonds with friends</h4>
+<p>Join groups, accept rules, connect with people you trust, and invite others who share your interests.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+<path d="M13.7 21a2 2 0 0 1-3.4 0"/>
+</svg>
+</div>
+<h4>Points for genuine help</h4>
+<p>Good contributions earn points. When your answers help others find the right direction, your profile stands out.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+<polyline points="16 7 22 7 22 13"/>
+</svg>
+</div>
+<h4>Questions and articles</h4>
+<p>Ask anything, write rich text posts, mark accepted answers, and give feedback on every post and comment.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="11" cy="11" r="7"/>
+<line x1="21" y1="21" x2="16.65" y2="16.65"/>
+</svg>
+</div>
+<h4>Search people and posts</h4>
+<p>Find groups, articles, and users with ranked results and fast suggestions.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+<line x1="4" y1="22" x2="4" y2="15"/>
+</svg>
+</div>
+<h4>Safe login</h4>
+<p>Email and Google login, optional two factor, hashed email tokens, and short sessions keep your account secure.</p>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section" style="border-top: 1px solid var(--line);">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow">
+<span class="num">02</span> How it works</span>
+                <h2 class="section-title">Nine decisions that matter.</h2>
+                <p class="section-sub">Feeds, abuse control, and what happens when a dependency fails. Short notes on each.</p>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">01 / FEEDS</span>
+<h4>Home feed with two paths</h4>
+<span class="tag c">feeds</span>
+</div>
+                <div class="dive-main">
+                    <p>Small groups get a feed row for every member when a post is created. That is fan-out on write. It uses one insert and unique keys, so a retry is safe.</p>
+                    <p>Large groups build the feed when someone opens the page. That is fan-out on read. If a queue job is ever lost, the second path still finds the post. A lost job must never hide a post.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Two</b> feed paths</span>
+                        <span class="metric">
+<b>Safe</b> to retry</span>
+                        <span class="metric">
+<b>Never</b> hides a post</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">02 / DATA</span>
+<h4>Fast pages with keyset cursors</h4>
+<span class="tag c">data</span>
+</div>
+                <div class="dive-main">
+                    <p>Lists page with keyset cursors, not offset. Deep pages stay fast because the database jumps straight to the next row. Models use <strong>Drizzle ORM</strong> for typed queries, and the hot feed reads drop to raw SQL.</p>
+                    <p>Cursors are opaque and checked before use. A test suite pages every tab at every size to prove there are no gaps and no repeats.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>0.03ms</b> cursor lookup</span>
+                        <span class="metric">
+<b>Few rows</b> per page</span>
+                        <span class="metric">
+<b>Zero</b> gaps in tests</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">03 / ABUSE</span>
+<h4>27 rate limit rules</h4>
+<span class="tag">abuse control</span>
+</div>
+                <div class="dive-main">
+                    <p>One small library holds 27 named rules across three counting methods: fixed windows, sliding windows, and a token bucket. The same logic runs in memory and in Redis, so both give the same answer.</p>
+                    <p>Login checks are stacked: IP plus email, then device, then IP alone. Only failed tries count, and a success refunds the budget. Every 429 response states the limit, what is left, and when to retry.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>27</b> named rules</span>
+                        <span class="metric">
+<b>0.6ms</b> refusal path</span>
+                        <span class="metric">
+<b>Clear</b> 429 headers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">04 / CACHE</span>
+<h4>Keeping shared caches separate from user data</h4>
+<span class="tag c">caching</span>
+</div>
+                <div class="dive-main">
+                    <p>Every cache fails open. If Redis goes down, pages get slower but stay correct. One shared version number clears all list caches at once, with no key scan.</p>
+                    <p>Single flight means a cache miss causes one rebuild, not many. User data such as votes and joined groups is added after the cache, on a copy. One user's data never leaks into another user's page, which also shuts down cache poisoning.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>One</b> version number</span>
+                        <span class="metric">
+<b>One</b> rebuild per miss</span>
+                        <span class="metric">
+<b>Fail open</b> caches</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">05 / AUTH</span>
+<h4>Login and session safety</h4>
+<span class="tag">auth</span>
+</div>
+                <div class="dive-main">
+                    <p>Refresh tokens are random secrets stored only as hashes. Every use rotates the token. If an old token comes back, the whole token family is revoked. That is a direct answer to session hijack.</p>
+                    <p>Access tokens last 15 minutes. Logout adds the token to a deny list. The login path takes the same time whether or not an account exists, so it cannot be used to find emails. Two factor is optional.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Hash only</b> tokens at rest</span>
+                        <span class="metric">
+<b>Reuse</b> revokes family</span>
+                        <span class="metric">
+<b>15 min</b> access token</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">06 / INPUT</span>
+<h4>Strict input checks</h4>
+<span class="tag">security</span>
+</div>
+                <div class="dive-main">
+                    <p>Schemas are strict. <strong>AJV validation</strong> rejects unknown fields and prototype pollution attacks at the edge, before any handler runs. Rich text passes an allow list, so scripts and bad links cannot be saved.</p>
+                    <p>Free text is normalized and stripped of control characters and hidden text tricks. A same origin guard returns 403 on cross site writes before login or validation runs. The content security policy uses a fresh nonce on every response.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>AJV</b> strict schemas</span>
+                        <span class="metric">
+<b>Allow list</b> for HTML</span>
+                        <span class="metric">
+<b>New nonce</b> per response</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">07 / QUEUES</span>
+<h4>Eight queues and live updates</h4>
+<span class="tag c">async</span>
+</div>
+                <div class="dive-main">
+                    <p>Eight RabbitMQ queues carry slow side work: email, feed fan-out, cache warming, and image processing. Messages are saved to disk. A failed message gets one retry, then goes to a dead letter queue. Queue depth alerts fire at boot.</p>
+                    <p>Comment events also feed live SSE streams, so open pages update without polling. New posts pre-warm the first page of each feed off the request path.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>8</b> queues</span>
+                        <span class="metric">
+<b>1</b> retry, then dead letter</span>
+                        <span class="metric">
+<b>SSE</b> live updates</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">08 / FILES</span>
+<h4>Uploads that skip the API</h4>
+<span class="tag c">files</span>
+</div>
+                <div class="dive-main">
+                    <p>Images go from the browser straight to private storage with a short lived signed URL. The API never touches the bytes. The request is checked against a strict type list and storage names come from server side IDs.</p>
+                    <p>A worker decodes each file, rejects animated formats and zip bombs, strips metadata, and resizes it. If the owner does not match, the response is 404, not 403, so IDs cannot be guessed.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>0 bytes</b> through the API</span>
+                        <span class="metric">
+<b>Clean</b> re-encode</span>
+                        <span class="metric">
+<b>404</b> against probing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">09 / AI</span>
+<h4>A bot with guards</h4>
+<span class="tag">ai</span>
+</div>
+                <div class="dive-main">
+                    <p>The bot turns public sources into posts. Untrusted text is fenced as data, so injected instructions stay inert. Output is checked by schema and again by code. Titles are length checked, duplicates are blocked, and links must be https.</p>
+                    <p>A scheduler spreads posts across the day with spacing and jitter. It backs off when the source API asks it to slow down. Dry runs, pause and resume, and live logs are all available from a small local panel.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Fenced</b> untrusted text</span>
+                        <span class="metric">
+<b>Two</b> output gates</span>
+                        <span class="metric">
+<b>Dry run</b> first</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUALITY -->
+    <section class="section" style="border-top: 1px solid var(--line);">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow">
+<span class="num">03</span> Quality</span>
+                <h2 class="section-title">Tested, not guessed.</h2>
+            </div>
+            <div class="codebox reveal">
+                <span class="c"># what keeps the platform honest</span>
+<br>
+                <span class="p">unit and integration</span> ... feature suites against a fresh store on every run<br>
+                <span class="p">security checks</span> ........ automated checks for known flaw types<br>
+                <span class="p">page tests</span> .............. no gaps, no repeats, at every size<br>
+                <span class="p">load tests</span> .............. run in CI with pass and fail limits<br>
+                <span class="p">deploy checklist</span> ........ backups, smoke checks, then reload
+            </div>
+            <div class="chips mt-40 reveal" style="gap: 10px;">
+                <span class="chip">Express</span>
+<span class="chip">Next.js 15</span>
+<span class="chip">React 19</span>
+<span class="chip">TypeScript</span>
+<span class="chip">Drizzle ORM</span>
+<span class="chip">PostgreSQL</span>
+<span class="chip">AJV</span>
+<span class="chip">Redis</span>
+<span class="chip">RabbitMQ</span>
+<span class="chip">Tailwind</span>
+<span class="chip">SSE</span>
+<span class="chip">PM2</span>
+<span class="chip">nginx</span>
+<span class="chip">Docker Compose</span>
+<span class="chip">GitHub Actions</span>
+            </div>
+            <!-- PRIVACY NOTE -->
+            <div class="privacy-note">
+                <p>The stack above covers the main parts of this build.</p>
+            </div>
+
+            <a class="btn btn-ghost mt-40 reveal" href="project-mcommunity.html">Next case study: MCommunity <span class="arr">→</span>
+</a>
+        </div>
+    </section>
+
+    </main>
+<footer>
+<div class="container">
+<div class="footer-top">
+<a class="brand" href="index.html">
+<img class="brand-logo" src="assets/brand/sagar-ghimire-logo.png" width="44" height="44" alt=""> Sagar Ghimire</a>
+<p>Thoughtful code. A useful product.</p>
+<div class="footer-social">
+<a href="https://wa.me/e__404__?text=Hello" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+<a href="https://github.com/e404x" target="_blank" rel="noopener">GitHub ↗</a>
+<a href="https://www.linkedin.com/in/sagar-ghimire-191a28345/" target="_blank" rel="noopener">LinkedIn ↗</a>
+<a href="mailto:sagar.code.88@gmail.com">Email ↗</a>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© <span data-year>2026</span> Sagar Ghimire</span>
+<span>Kathmandu, Nepal · Working remotely</span>
+</div>
+</div>
+</footer>
+<details class="quick-connect">
+<summary>
+<span aria-hidden="true">↗</span> Connect with Sagar</summary>
+<div class="connect-panel">
+<p class="eyebrow">Let’s make a start</p>
+<h2>Have a project in mind?</h2>
+<p>You don’t need a polished brief. A few lines about what you need are enough.</p>
+<a class="connect-email" href="mailto:sagar.code.88@gmail.com">Email Sagar <span aria-hidden="true">↗</span>
+</a>
+<div class="connect-copy-row">
+<span>sagar.code.88@gmail.com</span>
+<button type="button" data-copy="sagar.code.88@gmail.com" aria-live="polite">Copy email</button>
+</div>
+<a class="connect-secondary whatsapp-link" href="https://wa.me/e__404__?text=Hello" target="_blank" rel="noopener noreferrer">Message me on WhatsApp ↗</a>
+<a class="connect-secondary" href="https://www.linkedin.com/in/sagar-ghimire-191a28345/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+<a class="connect-secondary" href="contact.html#project-brief">Help me write a project enquiry →</a>
+</div>
+</details>
+<script src="assets/js/main.js">
+</script>
+</body>
+</html>

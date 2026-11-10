@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCommunity v1 Case Study | Sagar Ghimire</title>
+    <meta name="description" content="How I built MCommunity v1, an anonymous chat and video app with WebSocket messages, WebRTC calls, LiveKit rooms, and temporary state in Redis.">
+    <meta name="theme-color" content="#f8f7f3">
+    <link rel="canonical" href="https://sghimrie.com.np/project-mcommunity.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sagar Ghimire">
+    <meta property="og:title" content="Sagar Ghimire | MCommunity v1 Case Study">
+    <meta property="og:description" content="How I built MCommunity v1, an anonymous chat and video app with WebSocket messages, WebRTC calls, LiveKit rooms, and temporary state in Redis.">
+    <meta property="og:url" content="https://sghimrie.com.np/project-mcommunity.html">
+    <meta property="og:image" content="https://sghimrie.com.np/img.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="google-adsense-account" content="ca-pub-4592436505571114">
+    <link rel="icon" type="image/png" href="assets/brand/sagar-ghimire-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="bg-fx">
+</div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+<nav id="nav">
+<div class="nav-inner">
+<a class="brand" href="index.html" aria-label="Sagar Ghimire home">
+<img class="brand-logo" src="assets/brand/sagar-ghimire-logo.png" width="44" height="44" alt=""> Sagar Ghimire</a>
+<button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation">
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+</button>
+<div class="nav-menu" id="navigation">
+<a href="projects.html">Work</a>
+<a href="skills.html">Skills</a>
+<a href="about.html">About</a>
+<a class="nav-cta" href="contact.html">Let’s talk <span aria-hidden="true">↗</span>
+</a>
+</div>
+</div>
+</nav>
+
+    <main id="main">
+<header class="page-hero">
+        <div class="container">
+            <a class="back-link" href="projects.html" style="margin-bottom: 28px; display: flex; width: fit-content;">← All projects</a>
+            <span class="eyebrow" style="margin-top: 20px;">
+<span class="num">Case study 02</span> Chat and video</span>
+            <h1>MCommunity <span class="grad">v1</span>
+</h1>
+            <p class="lead">MCommunity is a live anonymous chat and video app. Users connect with strangers and create rooms for anonymous chat. Clients can also buy ad slots to reach the community.</p>
+            <div class="meta-grid">
+                <div class="meta-cell">
+<div class="k">Role</div>
+<div class="v">Solo full-stack developer</div>
+</div>
+                <div class="meta-cell">
+<div class="k">Type</div>
+<div class="v">Live chat and video</div>
+</div>
+                <div class="meta-cell">
+<div class="k">Core stack</div>
+<div class="v">WebSocket, WebRTC, LiveKit, Redis, Next.js</div>
+</div>
+                <div class="meta-cell">
+<div class="k">Database</div>
+<div class="v">None. Temporary state only</div>
+</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- WHAT IT DOES -->
+    <section class="section">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow">
+<span class="num">01</span> What it does</span>
+                <h2 class="section-title">Anonymous chat and rooms, built for real connection.</h2>
+                <p class="section-sub">This platform lets users connect with strangers at random, open rooms for anonymous chat, and play games together. Clients can also buy ad slots to show their message to the community.</p>
+            </div>
+            <div class="fgrid">
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<polyline points="17 1 21 5 17 9"/>
+<path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+<polyline points="7 23 3 19 7 15"/>
+<path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+</svg>
+</div>
+<h4>Connect with strangers</h4>
+<p>Pick a nickname and get matched at random for video or text chat. Filters for gender, country, language, and interests help you meet the right people.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+<polyline points="9 22 9 12 15 12 15 22"/>
+</svg>
+</div>
+<h4>Create rooms for chat</h4>
+<p>Open a temporary room by link, invite strangers, and keep the chat private. The room closes when the owner leaves.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<rect x="2" y="6" width="13" height="12" rx="2"/>
+<polygon points="15 10 22 6 22 18 15 14"/>
+</svg>
+</div>
+<h4>Video or text only</h4>
+<p>Camera users and text only users are matched in separate pools. The two modes never meet.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<rect x="3" y="3" width="18" height="18" rx="3"/>
+<circle cx="8.5" cy="8.5" r=".6"/>
+<circle cx="15.5" cy="15.5" r=".6"/>
+<circle cx="12" cy="12" r=".6"/>
+<circle cx="15.5" cy="8.5" r=".6"/>
+<circle cx="8.5" cy="15.5" r=".6"/>
+</svg>
+</div>
+<h4>Ludo in chat</h4>
+<p>A two to four player game with captures, safe cells, and exact finishes. The server holds the truth.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="12" cy="12" r="9"/>
+<path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+<line x1="9" y1="9" x2="9.01" y2="9"/>
+<line x1="15" y1="9" x2="15.01" y2="9"/>
+</svg>
+</div>
+<h4>Face effects</h4>
+<p>Browser based face tracking drives live camera overlays. Video frames never leave the device.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+<line x1="4" y1="22" x2="4" y2="15"/>
+</svg>
+</div>
+<h4>Ad slots for clients</h4>
+<p>Clients can buy ad slots to show their message to the community and reach active users.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+<path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+<line x1="1" y1="1" x2="23" y2="23"/>
+</svg>
+</div>
+<h4>Anonymous by design</h4>
+<p>A new identity per session. No profile, no history. State expires, so there is nothing left to leak.</p>
+</div>
+                <div class="fcard reveal">
+<div class="ico">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+</svg>
+</div>
+<h4>Honest presence</h4>
+<p>The online counter is a real count. Any display number that is not real is labelled and tested.</p>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section" style="border-top: 1px solid var(--line);">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow">
+<span class="num">02</span> How it works</span>
+                <h2 class="section-title">Real time problems, solved.</h2>
+                <p class="section-sub">Around 35 socket events, live media, and no database to fall back on. Each choice below exists because something can fail.</p>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">01 / MEDIA</span>
+<h4>WebRTC that handles glare</h4>
+<span class="tag c">media</span>
+</div>
+                <div class="dive-main">
+                    <p>The peer connection uses perfect negotiation in one hook. One side is polite and the other is not. If both send an offer at the same time, the polite side yields, so the call does not deadlock. Trickle ICE keeps media moving during renegotiation.</p>
+                    <p>Signaling runs on its own socket path. Relay credentials are short lived and signed, so a leaked credential expires on its own.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Polite</b> and impolite roles</span>
+                        <span class="metric">
+<b>Trickle</b> ICE</span>
+                        <span class="metric">
+<b>Expiring</b> relay credentials</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">02 / MEDIA</span>
+<h4>Mesh for small calls, LiveKit for large rooms</h4>
+<span class="tag c">media</span>
+</div>
+                <div class="dive-main">
+                    <p>One to one calls and small rooms use a direct WebRTC mesh. Each browser sends its stream to the others, with no media server in the middle. That is cheap and fast for a few people.</p>
+                    <p>Large rooms switch to <strong>LiveKit</strong>, which is an SFU. Each browser uploads once and LiveKit forwards the streams. The switch happens at runtime when a media token is present, and the app falls back to mesh if LiveKit is not available.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Mesh</b> for one to one</span>
+                        <span class="metric">
+<b>LiveKit</b> for large rooms</span>
+                        <span class="metric">
+<b>Runtime</b> switch</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">03 / MATCHING</span>
+<h4>Matchmaking with a score</h4>
+<span class="tag">algorithm</span>
+</div>
+                <div class="dive-main">
+                    <p>Hard rules decide who can meet: mode, gender, and country preferences. A soft score then ranks the people who pass. Shared language, shared country, and shared interests all add points.</p>
+                    <p>Waiting pools are sorted sets with timestamps. Old entries are removed by range, not by scanning every key. First come first served breaks ties, and a fallback stops two people waiting for a third.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Score</b> based match</span>
+                        <span class="metric">
+<b>Sorted</b> waiting pools</span>
+                        <span class="metric">
+<b>FIFO</b> fairness</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">04 / STATE</span>
+<h4>No database, only TTL state</h4>
+<span class="tag c">data</span>
+</div>
+                <div class="dive-main">
+                    <p>There is no SQL database and no ORM. All state goes through a small key value layer with two backends: memory and Redis. Every record has a time to live, and a per key lock keeps changes in order.</p>
+                    <p>Going from one server to many is an environment change. Use the Redis backend, share the socket adapter, and share the rate limit store. No code changes.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Memory</b> or Redis</span>
+                        <span class="metric">
+<b>TTL</b> on every record</span>
+                        <span class="metric">
+<b>Per key</b> locks</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">05 / ABUSE</span>
+<h4>Moderation that resists griefing</h4>
+<span class="tag">security</span>
+</div>
+                <div class="dive-main">
+                    <p>Serious reports need several different reporter IPs before anything happens. One angry user cannot remove a stranger. Small reports need repeated strikes inside a time window, and each IP has an hourly report budget.</p>
+                    <p>Private and loopback addresses are skipped. IPs are not written to logs. Short bans expire on their own. Production refuses to start if the relay setup would expose credentials.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Several</b> IPs for serious reports</span>
+                        <span class="metric">
+<b>Hourly</b> report budget</span>
+                        <span class="metric">
+<b>No</b> IP logs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">06 / SOCKETS</span>
+<h4>WebSocket safety</h4>
+<span class="tag">security</span>
+</div>
+                <div class="dive-main">
+                    <p>The socket handshake checks the origin and refuses the upgrade if it is wrong. Frames are capped at 256 KB to limit abuse. Proxy headers are read right to left with a trusted hop count, so a client cannot fake an IP and skip limits.</p>
+                    <p>Each event has its own rate budget. Signaling events get more, typing events get less. There is also a per IP connection cap at handshake time.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>256 KB</b> frame cap</span>
+                        <span class="metric">
+<b>Right to left</b> proxy parsing</span>
+                        <span class="metric">
+<b>Per event</b> budgets</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">07 / GAME</span>
+<h4>A game you can test</h4>
+<span class="tag c">craft</span>
+</div>
+                <div class="dive-main">
+                    <p>Ludo is a pure engine. It handles the shared ring, base exits, captures, safe cells, exact finishes, and extra rolls on a six. The server owns the state and keeps it across reconnects. The client only draws what the server decides.</p>
+                    <p>Because the engine is pure, the tests cover every rule, including invite expiry races. The 3D dice are plain CSS.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Pure</b> testable core</span>
+                        <span class="metric">
+<b>Kept</b> on reconnect</span>
+                        <span class="metric">
+<b>CSS</b> 3D dice</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dive reveal">
+                <div class="dive-side">
+<span class="dive-num">08 / SCALE</span>
+<h4>Load control in layers</h4>
+<span class="tag c">scale</span>
+</div>
+                <div class="dive-main">
+                    <p>Hot reads use a short cache where many misses share one rebuild. Cache headers let the edge absorb the rest. Background jobs queue only one deep. Extra jobs are dropped and counted instead of piling up.</p>
+                    <p>A waiting pool cap slows new users before the queue grows. Socket events have their own budgets, and each IP has a connection cap. Queue depth and pool size are visible on a protected status route.</p>
+                    <div class="metrics">
+                        <span class="metric">
+<b>Shared</b> rebuilds</span>
+                        <span class="metric">
+<b>Bounded</b> job queue</span>
+                        <span class="metric">
+<b>Live</b> load stats</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUALITY -->
+    <section class="section" style="border-top: 1px solid var(--line);">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow">
+<span class="num">03</span> Quality</span>
+                <h2 class="section-title">The tests are part of the design.</h2>
+            </div>
+            <div class="codebox reveal">
+                <span class="c"># what is covered</span>
+<br>
+                <span class="p">103</span> tests across <span class="p">10</span> suites: matchmaking, input cleaning, the key value store, cache, job queue, moderation, presence, Ludo, invites, and LiveKit logic<br>
+                <span class="k">affected only</span> runs: a commit hook runs just the tests your change touches<br>
+                <span class="s">pure cores</span> mean the engine files are easy to test without a server
+            </div>
+            <div class="chips mt-40 reveal" style="gap: 10px;">
+                <span class="chip">WebSocket</span>
+<span class="chip">Socket.IO</span>
+<span class="chip">WebRTC</span>
+<span class="chip">LiveKit</span>
+<span class="chip">Next.js</span>
+<span class="chip">TypeScript</span>
+<span class="chip">Redis</span>
+<span class="chip">Express</span>
+<span class="chip">Vitest</span>
+<span class="chip">coturn</span>
+<span class="chip">nginx</span>
+<span class="chip">Docker Compose</span>
+<span class="chip">PM2</span>
+            </div>
+            <!-- PRIVACY NOTE -->
+            <div class="privacy-note">
+                <p>The stack above covers the main parts of this build.</p>
+            </div>
+
+            <a class="btn btn-ghost mt-40 reveal" href="project-janasagar.html">Previous case study: Janasagar <span class="arr">→</span>
+</a>
+        </div>
+    </section>
+
+    </main>
+<footer>
+<div class="container">
+<div class="footer-top">
+<a class="brand" href="index.html">
+<img class="brand-logo" src="assets/brand/sagar-ghimire-logo.png" width="44" height="44" alt=""> Sagar Ghimire</a>
+<p>Thoughtful code. A useful product.</p>
+<div class="footer-social">
+<a href="https://wa.me/e__404__?text=Hello" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+<a href="https://github.com/e404x" target="_blank" rel="noopener">GitHub ↗</a>
+<a href="https://www.linkedin.com/in/sagar-ghimire-191a28345/" target="_blank" rel="noopener">LinkedIn ↗</a>
+<a href="mailto:sagar.code.88@gmail.com">Email ↗</a>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© <span data-year>2026</span> Sagar Ghimire</span>
+<span>Kathmandu, Nepal · Working remotely</span>
+</div>
+</div>
+</footer>
+<details class="quick-connect">
+<summary>
+<span aria-hidden="true">↗</span> Connect with Sagar</summary>
+<div class="connect-panel">
+<p class="eyebrow">Let’s make a start</p>
+<h2>Have a project in mind?</h2>
+<p>You don’t need a polished brief. A few lines about what you need are enough.</p>
+<a class="connect-email" href="mailto:sagar.code.88@gmail.com">Email Sagar <span aria-hidden="true">↗</span>
+</a>
+<div class="connect-copy-row">
+<span>sagar.code.88@gmail.com</span>
+<button type="button" data-copy="sagar.code.88@gmail.com" aria-live="polite">Copy email</button>
+</div>
+<a class="connect-secondary whatsapp-link" href="https://wa.me/e__404__?text=Hello" target="_blank" rel="noopener noreferrer">Message me on WhatsApp ↗</a>
+<a class="connect-secondary" href="https://www.linkedin.com/in/sagar-ghimire-191a28345/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+<a class="connect-secondary" href="contact.html#project-brief">Help me write a project enquiry →</a>
+</div>
+</details>
+<script src="assets/js/main.js">
+</script>
+</body>
+</html>
